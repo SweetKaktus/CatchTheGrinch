@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3xrpfq8n6vtr"]
+
+[ext_resource type="Texture2D" uid="uid://wg44b7q5skml" path="res://Assets/Sprites/elf-basic-movement-sprite-sheet-v2.png" id="1_uluqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5al"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(95, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v3by"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(19, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmu0o"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(0, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85lei"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(114, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lkg7"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(38, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml6c3"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(57, 0, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpvxs"]
+atlas = ExtResource("1_uluqn")
+region = Rect2(76, 0, 19, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlo2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5al")
+}],
+"loop": true,
+"name": &"ChangeDir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v3by")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmu0o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85lei")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lkg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml6c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpvxs")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wruyn"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_vlo2w")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_wruyn")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://br3gxycolu84s"]
+
+[ext_resource type="Script" path="res://Scripts/door_end_lvl.gd" id="1_agkfh"]
+[ext_resource type="Texture2D" uid="uid://dcbg7l6hwosm4" path="res://Assets/Sprites/Door-end-lvl.png" id="1_tsqtm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvaa3"]
+size = Vector2(20, 24)
+
+[sub_resource type="Gradient" id="Gradient_nhikx"]
+colors = PackedColorArray(0.640633, 0.00178007, 0.824668, 1, 1, 0.588175, 0.894796, 1)
+
+[node name="DoorEndLvl" type="Area2D"]
+script = ExtResource("1_agkfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uvaa3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
+texture = ExtResource("1_tsqtm")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+linear_accel_min = 2.0
+linear_accel_max = 10.0
+damping_min = 2.0
+damping_max = 10.0
+color_ramp = SubResource("Gradient_nhikx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

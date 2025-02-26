@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3xrpfq8n6vtr"]
+[gd_scene load_steps=12 format=3 uid="uid://d3xrpfq8n6vtr"]
 
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_6mnsv"]
 [ext_resource type="Texture2D" uid="uid://buymp3jnoisiv" path="res://Assets/Sprites/elf-basic-movement-sprite-sheet-v2.png" id="1_uluqn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wruyn"]
@@ -82,7 +83,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 10
+script = ExtResource("1_6mnsv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -91,5 +94,5 @@ shape = SubResource("CapsuleShape2D_wruyn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_vlo2w")
-animation = &"ChangeDir"
-frame_progress = 0.389417
+animation = &"Walk"
+frame_progress = 0.760015
